@@ -6,22 +6,22 @@ jobs:
   cypress-run:
     runs-on: ubuntu-latest
     steps:
-      - name: checkout
+      name: checkout
       uses: actions/checkout@v3
       #Ready to use node.js v16
-      - name: setting up nodejs
+      name: setting up nodejs
       uses: actions/setup-node@v3
       with:
         node-version: '16'
         cache: 'npm'
       #installs dependencies
-      - name: install dependencies
+      name: install dependencies
       run: npm ci
       #Executes static code analysis
-      - name: checks static code analysis
+      name: checks static code analysis
       run: eslint ./cypress/e2e/**/*.ts
       #Run tests headless mode
-      - name: run tests
+      name: run tests
       uses: cypress-io/github-action@v4
       with:
         # Specify Browser since container image is compile with Firefox
