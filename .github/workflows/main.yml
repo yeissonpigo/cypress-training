@@ -5,7 +5,7 @@ jobs:
   #Gets repository
   checkout:
     name: checkout
-    uses: actions/checkout@v3
+    uses: actions/checkout@v2
   #Ready to use node.js v16
   nodejs_setup:
     name: setting up nodejs
