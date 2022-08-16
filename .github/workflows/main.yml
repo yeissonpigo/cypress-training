@@ -19,7 +19,7 @@ jobs:
       run: npm ci
       #Executes static code analysis
     - name: checks static code analysis
-      run: eslint ./cypress/e2e/**/*.ts
+      run: npm run lint
       #Run tests headless mode
     - name: run tests
       uses: cypress-io/github-action@v4
