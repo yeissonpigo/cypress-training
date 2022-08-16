@@ -1,7 +1,6 @@
 name: CI Cypress
-on:
-  #Activates workflow everytime something happens on a pull request
-  pull_request:
+#Activates workflow everytime something happens on a pull request
+on: [pull_request]
 jobs:
   #Gets repository
   checkout:
