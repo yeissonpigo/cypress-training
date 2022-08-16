@@ -1,0 +1,39 @@
+---
+- name: Ansible GIT module demo
+  hosts: web
+# Defining the remote server where the ansible git  module will manage the objects
+  remote_user: ubuntu # Using Remote user as ubuntu
+  tasks:
+
+# Clones the public repository in the clone folder inside the opt directory.
+    - name: Clone a PUBLIC repo
+      ansible.builtin.git:
+        repo: https://github.com/ShankyTheBlogger/ATA-testing.git
+        dest: /opt/clone
+        separate_git_dir: /opt/clone.git
+        clone: yes
+        update: yes
+
+# Clones the private repository in the private_clone folder inside the *opt* directory.
+    - name: Clone a PRIVATE repo
+      ansible.builtin.git:
+        repo: git@github.com:ShankyTheBlogger/Privaterepo.git
+        dest: /opt/private_clone
+        clone: yes
+        #    accept_hostkey: no
+        key_file: /home/ubuntu/.ssh/id_rsa
+        version: main
+
+# Confirms if the public repository was successfully cloned in the specified folder.
+    - name: Confirming if the Git repository has been succesfully cloned locally
+      ansible.builtin.git:
+         repo: https://github.com/ShankyTheBlogger/ATA-testing.git
+         dest: /opt/clone
+         clone: no
+         update: no
+
+    - name: Clone a repo with separate git directory Git to separate from current working tree.
+      ansible.builtin.git:
+        repo: https://github.com/ShankyTheBlogger/ATA-testing.git
+        dest: /opt/different-directory.
+        separate_git_dir: /opt/different-directory.git
