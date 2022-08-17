@@ -15,7 +15,28 @@ describe("Buy a t-shirt", () => {
         cy.get('#layer_cart > .clearfix > div:nth-child(2) > .button-container > a').click()
     })
 
-    //Clicks on Proceed to checkout button (different page than before)
+    // Clicks on Proceed to checkout button (different page than before)
     cy.get('#center_column > .cart_navigation > a:nth-child(1)').click()
+
+    // Inserts login information and clicks on login
+    cy.get("#email").type("aperdomobo@gmail.com")
+    cy.get("#passwd").type("WorkshopProtractor")
+    cy.get('#SubmitLogin').click()
+
+    // Clicks on Proceed to checkout button at address stage
+    cy.get('button[name="processAddress"]').click()
+
+    // Checks checkbox to agree on terms
+    cy.get('#cgv').click()
+    // Clicks on Proceed to checkout at shipping stage
+    cy.get('#form > p > button[name="processCarrier"]').click()
+
+    // Selects payment method
+    cy.get('a.bankwire').click()
+    // Confirms order
+    cy.get('#center_column > form > p > button[type="submit"]').click()
+
+    // Checks order was completed
+    cy.get('.cheque-indent > strong').should('have.text', 'Your order on My Store is complete.')
   });
 });
