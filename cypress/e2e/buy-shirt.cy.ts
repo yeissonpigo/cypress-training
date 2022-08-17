@@ -16,6 +16,6 @@ describe("Buy a t-shirt", () => {
     })
 
     //Clicks on Proceed to checkout button (different page than before)
-    
+    cy.get('#center_column > .cart_navigation > a:nth-child(1)').click()
   });
 });
