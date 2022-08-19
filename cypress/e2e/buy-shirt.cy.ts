@@ -1,9 +1,11 @@
-import {MenuContentPage, ProductsListPage, ShopingCartPage, LoginPage} from "../page/index";
+import {MenuContentPage, ProductsListPage, ShopingCartPage, LoginPage, AddressStepPage, ShippingStepPage} from "../page/index";
 
 const menuContentPage = new MenuContentPage()
 const productsListPage = new ProductsListPage(1)
 const shopingCartPage = new ShopingCartPage()
 const loginPage = new LoginPage("aperdomobo@gmail.com", "WorkshopProtractor")
+const addressStepPage = new AddressStepPage()
+const shippingStepPage = new ShippingStepPage()
 
 describe("Buy a t-shirt", () => {
   it("finds t-shirt button and clicks on it", ()=>{
@@ -27,12 +29,12 @@ describe("Buy a t-shirt", () => {
     loginPage.loginButtonFun()
 
     // Clicks on Proceed to checkout button at address stage
-    cy.get("button[name=\"processAddress\"]").click()
+    addressStepPage.checkout()
 
     // Checks checkbox to agree on terms
-    cy.get("#cgv").click()
+    shippingStepPage.clickCheckbox()
     // Clicks on Proceed to checkout at shipping stage
-    cy.get("#form > p > button[name=\"processCarrier\"]").click()
+    shippingStepPage.checkoutFun()
 
     // Selects payment method
     cy.get("a.bankwire").click()
