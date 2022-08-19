@@ -1,49 +1,49 @@
-import {MenuContentPage, ProductsListPage, ShopingCartPage, LoginPage, AddressStepPage, ShippingStepPage, PaymentStepPage, ConfirmationPage} from "../page/index";
+import * as pom from "../page/index";
 
-const menuContentPage = new MenuContentPage()
-const productsListPage = new ProductsListPage(1)
-const shopingCartPage = new ShopingCartPage()
-const loginPage = new LoginPage("aperdomobo@gmail.com", "WorkshopProtractor")
-const addressStepPage = new AddressStepPage()
-const shippingStepPage = new ShippingStepPage()
-const paymentStepPage = new PaymentStepPage()
-const confirmationPage = new ConfirmationPage()
+const menuContentPage = new pom.MenuContentPage();
+const productsListPage = new pom.ProductsListPage(1);
+const shopingCartPage = new pom.ShopingCartPage();
+const loginPage = new pom.LoginPage("aperdomobo@gmail.com", "WorkshopProtractor");
+const addressStepPage = new pom.AddressStepPage();
+const shippingStepPage = new pom.ShippingStepPage();
+const paymentStepPage = new pom.PaymentStepPage();
+const confirmationPage = new pom.ConfirmationPage();
 
 describe("Buy a t-shirt", () => {
   it("finds t-shirt button and clicks on it", ()=>{
     // Goes to page
-    menuContentPage.visitMenuContentPage()
+    menuContentPage.visitMenuContentPage();
 
     // Finds t-shirt button and clicks it
-    menuContentPage.goToTShirtMenu()
+    menuContentPage.goToTShirtMenu();
 
     // Hovers over product to show add to cart button
-    productsListPage.hoverOnProduct()
+    productsListPage.hoverOnProduct();
 
     // Finds add to cart button and clicks it
-    productsListPage.addToCart()
+    productsListPage.addToCart();
     // Clicks on Proceed to checkout button (different page than before)
-    shopingCartPage.clickProceed()
+    shopingCartPage.clickProceed();
 
     // Inserts login information and clicks on login
-    loginPage.enterEmail()
-    loginPage.enterPasswd()
-    loginPage.loginButtonFun()
+    loginPage.enterEmail();
+    loginPage.enterPasswd();
+    loginPage.loginButtonFun();
 
     // Clicks on Proceed to checkout button at address stage
-    addressStepPage.checkout()
+    addressStepPage.checkout();
 
     // Checks checkbox to agree on terms
-    shippingStepPage.clickCheckbox()
+    shippingStepPage.clickCheckbox();
     // Clicks on Proceed to checkout at shipping stage
-    shippingStepPage.checkoutFun()
+    shippingStepPage.checkoutFun();
 
     // Selects payment method
-    paymentStepPage.selectPaymentMethod()
+    paymentStepPage.selectPaymentMethod();
     // Confirms order
-    paymentStepPage.confirmOrderFun()
+    paymentStepPage.confirmOrderFun();
 
     // Checks order was completed
-    confirmationPage.checksConfirmation()
+    confirmationPage.checksConfirmation();
   });
 });
