@@ -1,4 +1,4 @@
-import {MenuContentPage, ProductsListPage, ShopingCartPage, LoginPage, AddressStepPage, ShippingStepPage} from "../page/index";
+import {MenuContentPage, ProductsListPage, ShopingCartPage, LoginPage, AddressStepPage, ShippingStepPage, PaymentStepPage, ConfirmationPage} from "../page/index";
 
 const menuContentPage = new MenuContentPage()
 const productsListPage = new ProductsListPage(1)
@@ -6,6 +6,8 @@ const shopingCartPage = new ShopingCartPage()
 const loginPage = new LoginPage("aperdomobo@gmail.com", "WorkshopProtractor")
 const addressStepPage = new AddressStepPage()
 const shippingStepPage = new ShippingStepPage()
+const paymentStepPage = new PaymentStepPage()
+const confirmationPage = new ConfirmationPage()
 
 describe("Buy a t-shirt", () => {
   it("finds t-shirt button and clicks on it", ()=>{
@@ -37,11 +39,11 @@ describe("Buy a t-shirt", () => {
     shippingStepPage.checkoutFun()
 
     // Selects payment method
-    cy.get("a.bankwire").click()
+    paymentStepPage.selectPaymentMethod()
     // Confirms order
-    cy.get("#center_column > form > p > button[type=\"submit\"]").click()
+    paymentStepPage.confirmOrderFun()
 
     // Checks order was completed
-    cy.get(".cheque-indent > strong").should("have.text", "Your order on My Store is complete.")
+    confirmationPage.checksConfirmation()
   });
 });
