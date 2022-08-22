@@ -11,7 +11,6 @@ const confirmationPage = new pom.ConfirmationPage();
 
 describe("Buy a t-shirt", () => {
   it("finds t-shirt button and clicks on it", ()=>{
-    
     menuContentPage.visitMenuContentPage();
     menuContentPage.goToTShirtMenu();
     productsListPage.addToCart(1);
