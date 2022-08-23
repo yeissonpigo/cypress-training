@@ -5,7 +5,7 @@ class PaymentStepPage {
 
     constructor() {
         this.paymentMethod = "a.bankwire"
-        this.confirmOrder = "#center_column > form > p > button[type=\"submit\"]"
+        this.confirmOrder = "#center_column > form > p > button[type='submit']"
     }
 
     public selectPaymentMethod() {
