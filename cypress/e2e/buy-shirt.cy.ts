@@ -13,7 +13,7 @@ describe("Buy a t-shirt", () => {
   it("finds t-shirt button and clicks on it", ()=>{
     menuContentPage.visitMenuContentPage();
     menuContentPage.goToTShirtMenu();
-    productsListPage.addToCart(1);
+    productsListPage.addToCart(1, "Add to cart");
     shopingCartPage.clickProceed();
     loginPage.login("aperdomobo@gmail.com", "WorkshopProtractor");
     addressStepPage.checkout();
