@@ -3,7 +3,7 @@ class ShopingCartPage {
     private checkoutButton : string
     
     constructor() {
-        this.checkoutButton = "#center_column > .cart_navigation.clearfix > a"
+        this.checkoutButton = "#center_column > .cart_navigation.clearfix > a.button.btn"
     }
 
     public clickProceed() {

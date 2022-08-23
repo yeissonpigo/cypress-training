@@ -3,7 +3,7 @@ class ProductsListPage {
     private addToCartButtonContainer: string
 
     constructor() {
-        this.proceedToCheckoutButton = "#layer_cart > .clearfix > .layer_cart_cart > .button-container > a.button-default"
+        this.proceedToCheckoutButton = "#layer_cart > .clearfix > .layer_cart_cart > .button-container > a.btn-default"
         this.addToCartButtonContainer = ".product-container > .right-block > .button-container"
     }
 
