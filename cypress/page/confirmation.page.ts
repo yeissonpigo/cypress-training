@@ -1,17 +1,23 @@
 class ConfirmationPage {
 
     private confirmationText: string
-    private assertType: string
-    private assertValue: string
+    // private assertType: string
+    // private assertValue: string
 
     constructor() {
-        this.confirmationText = ".cheque-indent > strong"
-        this.assertValue = "Your order on My Store is complete."
-        this.assertType = "have.text"
+        this.confirmationText = "p.cheque-indent > strong"
+        //this.assertValue = "Your order on My Store is complete."
+        //this.assertType = "have.text"
     }
 
-    public checksConfirmation() {
-        cy.get(this.confirmationText).should(this.assertType, this.assertValue)
+    //Page elements
+    public confirmationAnswer(){
+        return cy.get(this.confirmationText)
+    }
+
+    //Page actions
+    public checksConfirmation(expectedResult: string, validationType: string) {
+        this.confirmationAnswer().should(validationType, expectedResult)
     }
 }
 export {ConfirmationPage}

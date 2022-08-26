@@ -21,6 +21,6 @@ describe("Buy a t-shirt", () => {
     shippingStepPage.checkoutFun();
     paymentStepPage.clickOnSelectPaymentMethod();
     paymentStepPage.clickOnConfirmOrder();
-    confirmationPage.checksConfirmation();
+    confirmationPage.checksConfirmation("Your order on My Store is complete.", "have.text");
   });
 });
