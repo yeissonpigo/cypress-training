@@ -10,10 +10,24 @@ class LoginPage {
         this.loginButton = "#SubmitLogin"
     }
 
+    //Page elements
+    public emailInputFun(){
+        return cy.get(this.emailInput)
+    }
+
+    public passwdInputFun(){
+        return cy.get(this.passwdInput)
+    }
+
+    public loginButtonFun(){
+        return cy.get(this.loginButton)
+    }
+
+    //Page actions
     public login(email: string, passwd: string) {
-        cy.get(this.emailInput).type(email)
-        cy.get(this.passwdInput).type(passwd)
-        cy.get(this.loginButton).click()
+        this.emailInputFun().type(email)
+        this.passwdInputFun().type(passwd)
+        this.loginButtonFun().click()
     }
 }
 export {LoginPage}
