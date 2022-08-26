@@ -16,7 +16,7 @@ describe("Buy a t-shirt", () => {
     productsListPage.addToCart(1, "Add to cart");
     shopingCartPage.clickProceed();
     loginPage.login("aperdomobo@gmail.com", "WorkshopProtractor");
-    cy.get(addressStepPage.checkout()).click();
+    addressStepPage.clickOnCheckout();
     shippingStepPage.clickCheckbox();
     shippingStepPage.checkoutFun();
     paymentStepPage.clickOnSelectPaymentMethod();

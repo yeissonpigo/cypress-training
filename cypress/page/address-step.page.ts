@@ -6,8 +6,14 @@ class AddressStepPage {
         this.checkoutButton = "button[name='processAddress']"
     }
 
+    //Page elements
     public checkout() {
-        return this.checkoutButton
+        return cy.get(this.checkoutButton)
+    }
+
+    //Page actions
+    public clickOnCheckout(){
+        this.checkout().click()
     }
 }
 
