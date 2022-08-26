@@ -8,23 +8,12 @@ class PaymentStepPage {
         this.confirmOrderButton = "#cart_navigation > button.button.btn[type='submit']"
     }
 
-
-    //Page elements
-    public selectPaymentMethod() {
-        return cy.get(this.paymentMethod)
-    }
-
-    public confirmOrder() {
-        return cy.get(this.confirmOrderButton)
-    }
-
-    //Page actions
     public clickOnSelectPaymentMethod() {
-        this.selectPaymentMethod().click()
+        cy.get(this.paymentMethod).click()
     }
 
     public clickOnConfirmOrder(){
-        this.confirmOrder().click()
+        cy.get(this.confirmOrderButton).click()
     }
 }
 export {PaymentStepPage}

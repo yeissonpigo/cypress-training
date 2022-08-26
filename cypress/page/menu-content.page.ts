@@ -7,19 +7,12 @@ class MenuContentPage {
         this.menuContentPageUrl = "http://automationpractice.com/"
     }
 
-    //Page elements
-
-    public tShirtButtonFun() {
-        return cy.get(this.tShirtButton)
-    }
-
-    //Page actions
     public visitMenuContentPage() {
         cy.visit(this.menuContentPageUrl)
     }
 
     public goToTShirtMenu() {
-        this.tShirtButtonFun().click()
+        cy.get(this.tShirtButton).click()
     }
 }
 
