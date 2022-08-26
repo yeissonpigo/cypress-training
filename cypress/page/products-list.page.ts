@@ -1,4 +1,5 @@
 class ProductsListPage {
+    
     private proceedToCheckoutButton: string
     private addToCartButtonContainer: string
 

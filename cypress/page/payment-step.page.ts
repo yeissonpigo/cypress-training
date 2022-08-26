@@ -1,19 +1,30 @@
 class PaymentStepPage {
     
     private paymentMethod: string
-    private confirmOrder: string
+    private confirmOrderButton: string
 
     constructor() {
         this.paymentMethod = "a.bankwire"
-        this.confirmOrder = "#cart_navigation > button.button.btn[type='submit']"
+        this.confirmOrderButton = "#cart_navigation > button.button.btn[type='submit']"
     }
 
+
+    //Page elements
     public selectPaymentMethod() {
-        return this.paymentMethod
+        return cy.get(this.paymentMethod)
     }
 
-    public confirmOrderFun() {
-        return this.confirmOrder
+    public confirmOrder() {
+        return cy.get(this.confirmOrderButton)
+    }
+
+    //Page actions
+    public clickOnSelectPaymentMethod() {
+        this.selectPaymentMethod().click()
+    }
+
+    public clickOnConfirmOrder(){
+        this.confirmOrder().click()
     }
 }
 export {PaymentStepPage}

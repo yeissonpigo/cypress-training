@@ -19,8 +19,8 @@ describe("Buy a t-shirt", () => {
     cy.get(addressStepPage.checkout()).click();
     shippingStepPage.clickCheckbox();
     shippingStepPage.checkoutFun();
-    cy.get(paymentStepPage.selectPaymentMethod()).click();
-    cy.get(paymentStepPage.confirmOrderFun()).click();
+    paymentStepPage.clickOnSelectPaymentMethod();
+    paymentStepPage.clickOnConfirmOrder();
     confirmationPage.checksConfirmation();
   });
 });
