@@ -5,7 +5,7 @@ class ShippingStepPage {
 
     constructor() {
         this.checkbox = "#cgv"
-        this.checkout = "#form > p > button[name='processCarrier']"
+        this.checkout = "#form button[name='processCarrier']"
     }
 
     public clickCheckbox() {
