@@ -11,7 +11,7 @@ class MenuContentPage {
         cy.visit(this.menuContentPageUrl)
     }
 
-    public goToTShirtMenu() {
+    public TShirtMenu() {
         return this.tShirtButton
     }
 }
