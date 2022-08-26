@@ -12,7 +12,7 @@ class MenuContentPage {
     }
 
     public goToTShirtMenu() {
-        cy.get(this.tShirtButton).click()
+        return this.tShirtButton
     }
 }
 
