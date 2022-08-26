@@ -7,7 +7,7 @@ class AddressStepPage {
     }
 
     public checkout() {
-        cy.get(this.checkoutButton).click()
+        return this.checkoutButton
     }
 }
 
