@@ -5,15 +5,15 @@ class PaymentStepPage {
 
     constructor() {
         this.paymentMethod = "a.bankwire"
-        this.confirmOrder = "#center_column > form > p > button[type='submit']"
+        this.confirmOrder = "#cart_navigation > button.button.btn[type='submit']"
     }
 
     public selectPaymentMethod() {
-        cy.get(this.paymentMethod).click()
+        return this.paymentMethod
     }
 
     public confirmOrderFun() {
-        cy.get(this.confirmOrder).click()
+        return this.confirmOrder
     }
 }
 export {PaymentStepPage}
