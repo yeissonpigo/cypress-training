@@ -1,19 +1,21 @@
 class ProductsListPage {
-    private addToCartButton: string
+    
+    private proceedToCheckoutButton: string
     private addToCartButtonContainer: string
-    private addToCartButtonText: string
+    private productContainer(productNumber: number){
+        return `.product_list > li:nth-child(${productNumber})`
+    }
 
     constructor() {
-        this.addToCartButton = "#layer_cart > .clearfix > div:nth-child(2) > .button-container > a"
-        this.addToCartButtonContainer = ".product-container > .right-block > .button-container"
-        this.addToCartButtonText = "Add to cart"
+        this.proceedToCheckoutButton = "a[title='Proceed to checkout']"
+        this.addToCartButtonContainer = "a[title='Add to cart']"
     }
 
     public addToCart(productNumber: number) {
-        cy.get(`.product_list > li:nth-child(${productNumber})`).trigger("mouseover")
-        cy.get(this.addToCartButtonContainer).contains(this.addToCartButtonText).click().then((popUp) => {
+        cy.get(this.productContainer(productNumber)).trigger("mouseover")
+        cy.get(this.addToCartButtonContainer).click().then(() => {
             // Clicks on Proceed to checkout button
-            cy.get(this.addToCartButton).click()
+            cy.get(this.proceedToCheckoutButton).click()
           })
     }
 }
