@@ -11,13 +11,12 @@ const confirmationPage = new pom.ConfirmationPage();
 
 describe("Buy a t-shirt", () => {
   it("finds t-shirt button and clicks on it", ()=>{
-
-    //Arrange
+    // Arrange
     const expectedAnswer = "Your order on My Store is complete.";
     const assertType = "have.text";
     menuContentPage.visitMenuContentPage();
 
-    //Act
+    // Act
     menuContentPage.goToTShirtMenu();
     productsListPage.addToCart(1);
     shopingCartPage.clickProceed();
@@ -28,7 +27,7 @@ describe("Buy a t-shirt", () => {
     paymentStepPage.clickOnSelectPaymentMethod();
     paymentStepPage.clickOnConfirmOrder();
 
-    //Assert
+    // Assert
     confirmationPage.checksConfirmation(expectedAnswer, assertType);
   });
 });
