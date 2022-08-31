@@ -1,9 +1,10 @@
 class MenuContentPage {
-    private tShirtButton: string
+    private menuButton(buttonText: string){
+        return `#block_top_menu > ul > li > a[title='${buttonText}']`
+    }
     private menuContentPageUrl: string
 
     constructor(){
-        this.tShirtButton = "#block_top_menu > ul > li > a[title='T-shirts']"
         this.menuContentPageUrl = "http://automationpractice.com/"
     }
 
@@ -12,7 +13,11 @@ class MenuContentPage {
     }
 
     public goToTShirtMenu() {
-        cy.get(this.tShirtButton).click()
+        cy.get(this.menuButton("T-shirts")).click()
+    }
+
+    public goToDressMenu(){
+        cy.get(this.menuButton("Dresses")).click()
     }
 }
 
