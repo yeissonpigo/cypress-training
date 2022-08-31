@@ -12,6 +12,13 @@ describe("the user navigates to the dresses page should", () => {
     it("show the available dresses", () => {
         //Arrange
         const expectedDresses = ["Printed Dress", "Printed Dress", "Printed Summer Dress", "Printed Summer Dress", "Printed Chiffon Dress"];
-        
+        menuContentPage.visitMenuContentPage();
+
+        //Act
+        menuContentPage.goToDressMenu();
+
+        //Assert
+        dressesListPage.validateItemsNumber(expectedDresses.length);
+        dressesListPage.validateItemsName(expectedDresses);
     });
 });

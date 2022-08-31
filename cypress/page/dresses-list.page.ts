@@ -12,7 +12,7 @@ class DressesListPage {
     }
 
     validateItemsNumber(itemsNumber: number){
-        cy.get(this.dressItem).should("have.length", itemsNumber);
+        this.getDressProducts().should("have.length", itemsNumber);
     }
 
     validateItemsName(names: string[]){
