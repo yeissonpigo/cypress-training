@@ -2,10 +2,6 @@ class ProductsListPage {
 
     private proceedToCheckoutButton: string
     private addToCartButtonContainer: string
-    // private productContainer(productName: string) {
-    //     return `.product_list [itemprop="name"] a[title="${productName}"]`
-    //     return
-    // }
     private itemsContainer: string
 
     constructor() {
