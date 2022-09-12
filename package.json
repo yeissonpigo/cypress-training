@@ -4,7 +4,7 @@
   "description": "This is a Workshop about Cypress",
   "main": "index.js",
   "scripts": {
-    "pretest": "rm -r cypress/reports",
+    "pretest": "rm -rv cypress/reports",
     "test": "cypress run",
     "posttest": "npm run combine:reports && npm run generate:reports",
     "test:open": "npm run lint -- --fix && cypress open",
