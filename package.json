@@ -4,10 +4,15 @@
   "description": "This is a Workshop about Cypress",
   "main": "index.js",
   "scripts": {
+    "pretest": "rm -rv cypress/reports",
     "test": "cypress run",
+    "posttest": "npm run combine:reports && npm run generate:reports",
     "test:open": "npm run lint -- --fix && cypress open",
+    "posttest:open": "npm run combine:reports && npm run generate:reports",
     "lint": "eslint ./cypress/e2e/**/*.ts",
-    "lint:fix": "npm run lint -- --fix"
+    "lint:fix": "npm run lint -- --fix",
+    "combine:reports": "mochawesome-merge cypress/reports/mocha/*.json > cypress/reports/report.json",
+    "generate:reports": "marge cypress/reports/report.json -f report -o cypress/reports"
   },
   "repository": {
     "type": "git",
@@ -29,9 +34,15 @@
     "@typescript-eslint/eslint-plugin": "^5.33.0",
     "@typescript-eslint/parser": "^5.33.0",
     "cypress": "^10.4.0",
+    "cypress-mochawesome-reporter": "^3.2.2",
+    "cypress-multi-reporters": "^1.6.1",
     "eslint": "^8.21.0",
     "eslint-config-google": "^0.14.0",
     "eslint-plugin-cypress": "^2.12.1",
+    "mocha": "^10.0.0",
+    "mochawesome": "^7.1.3",
+    "mochawesome-merge": "^4.2.1",
+    "mochawesome-report-generator": "^6.2.0",
     "typescript": "^4.7.4"
   }
 }
