@@ -10,7 +10,7 @@ const paymentStepPage = new pom.PaymentStepPage();
 const confirmationPage = new pom.ConfirmationPage();
 
 describe("Buy a t-shirt", () => {
-  it("finds t-shirt button and clicks on it", ()=>{
+  it("finds t-shirt button and clicks on it", () => {
     // Arrange
     const expectedAnswer = "Your order on My Store is complete.";
     const assertType = "have.text";
@@ -18,7 +18,7 @@ describe("Buy a t-shirt", () => {
 
     // Act
     menuContentPage.goToTShirtMenu();
-    productsListPage.addToCart(1);
+    productsListPage.addToCart("Faded Short Sleeve T-shirts");
     shopingCartPage.clickProceed();
     loginPage.login("aperdomobo@gmail.com", "WorkshopProtractor");
     addressStepPage.clickOnCheckout();
