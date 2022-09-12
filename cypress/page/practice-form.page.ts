@@ -14,8 +14,8 @@ class PracticeFormPage {
         return `[value="${gender}"]`
     }
 
-    private getSelectorHobbieByPosition(position: string) {
-        return `[value="${position}"]`
+    private getSelectorHobbieByPosition(position: number) {
+        return `#hobbies-checkbox-${position}`
     }
 
     private getSelectorSubmitButton = "#submit"
@@ -27,7 +27,7 @@ class PracticeFormPage {
     }
 
     public click(element: string) {
-        cy.get(element).click()
+        cy.get(element).click({ force: true })
     }
 
     public visitFormContentPage() {
@@ -39,11 +39,11 @@ class PracticeFormPage {
     }
 
     public selectGender(gender: string) {
-        cy.get(this.getSelectorGenderByText(gender)).click()
+        cy.get(this.getSelectorGenderByText(gender)).parent().click()
     }
 
-    public selectHobby(hobby: string) {
-        cy.get(this.getSelectorHobbieByPosition(hobby)).click()
+    public selectHobby(hobby: number) {
+        cy.get(this.getSelectorHobbieByPosition(hobby)).click({ force: true })
     }
 
     public fillForm(information: {
@@ -63,7 +63,7 @@ class PracticeFormPage {
         this.insertIntoInput("userNumber", information.mobileNumber)
         this.insertIntoInput("dateOfBirthInput", information.dateOfBirth)
         information.hobbies.forEach((hobbie) => {
-            this.selectHobby(`this.transformHobby.${hobbie}`)
+            this.selectHobby(this.transformHobby[`${hobbie}`])
         })
         this.insertIntoInput("currentAddress", information.currentAddress)
         this.click(this.getSelectorSubmitButton)
