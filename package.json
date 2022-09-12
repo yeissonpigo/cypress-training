@@ -4,10 +4,15 @@
   "description": "This is a Workshop about Cypress",
   "main": "index.js",
   "scripts": {
-    "test": "rm -r cypress/reports && cypress run",
+    "pretest": "rm -r cypress/reports",
+    "test": "cypress run",
+    "posttest": "npm run combine:reports && npm run generate:reports",
     "test:open": "npm run lint -- --fix && cypress open",
+    "posttest:open": "npm run combine:reports && npm run generate:reports",
     "lint": "eslint ./cypress/e2e/**/*.ts",
-    "lint:fix": "npm run lint -- --fix"
+    "lint:fix": "npm run lint -- --fix",
+    "combine:reports": "mochawesome-merge cypress/reports/mocha/*.json > cypress/reports/report.json",
+    "generate:reports": "marge cypress/reports/report.json -f report -o cypress/reports"
   },
   "repository": {
     "type": "git",
