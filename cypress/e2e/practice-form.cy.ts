@@ -1,4 +1,4 @@
-import {PracticeFormPage} from "../page/index";
+import { PracticeFormPage } from "../page/index";
 
 describe("User goes to website, fills the form and submits it", () => {
   let practiceFormPage: PracticeFormPage;
@@ -17,12 +17,16 @@ describe("User goes to website, fills the form and submits it", () => {
       mobileNumber: "3656589156",
       hobbies: ["Music", "Reading"],
       currentAddress: "Av siempreViva # 123",
+      state: "Uttar Pradesh",
+      city: "Agra"
     };
+    const expectedText = "Thanks for submitting the form";
     practiceFormPage.visitFormContentPage();
 
     // Act
     practiceFormPage.fillForm(personalInformation);
 
     // Assert
+    practiceFormPage.verifyModalHeaderText(expectedText);
   });
 });
