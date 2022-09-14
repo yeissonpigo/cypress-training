@@ -2,6 +2,14 @@ class PracticeFormPage {
 
     private selectorParentStateDropdown = ".css-1wa3eu0-placeholder:contains('Select State')"
     private selectorParentCityDropdown = ".css-1wa3eu0-placeholder:contains('Select City')"
+    private selectorFirstNameInput = "#firstName"
+    private selectorLastNameInput = "#lastName"
+    private selectorUserEmailInput = "#userEmail"
+    private selectorUserNumberInput = "#userNumber"
+    private selectorUserDateOfBirthInput = "#dateOfBirthInput"
+    private selectorAddressInput = "#currentAddress"
+    private selectorPopUpTitle = "#example-modal-sizes-title-lg"
+    private selectorForm = "#userForm"
 
     private transformHobby = {
         "Sports": 1,
@@ -11,10 +19,6 @@ class PracticeFormPage {
 
     private getSelectorState(state: string) {
         return `.css-26l3qy-menu > div > div:contains('${state}')`
-    }
-
-    private getSelectorInputById(inputId: string) {
-        return `#${inputId}`
     }
 
     private getSelectorGenderByText(gender: string) {
@@ -42,15 +46,15 @@ class PracticeFormPage {
     }
 
     public insertIntoInput(selector: string, text: string) {
-        cy.get(this.getSelectorInputById(selector)).type(text)
+        cy.get(selector).type(text)
     }
 
     public selectGender(gender: string) {
-        cy.get(this.getSelectorGenderByText(gender)).parent().click()
+        cy.get(this.getSelectorGenderByText(gender)).check({ force: true })
     }
 
     public selectHobby(hobby: number) {
-        cy.get(this.getSelectorHobbieByPosition(hobby)).click({ force: true })
+        cy.get(this.getSelectorHobbieByPosition(hobby)).check({ force: true })
     }
 
     public selectState(state: string) {
@@ -63,35 +67,38 @@ class PracticeFormPage {
         this.click(this.getSelectorState(city))
     }
 
-    public fillForm(information: {
-        name: string,
-        lastName: string,
-        email: string,
-        gender: string,
-        dateOfBirth: string,
-        mobileNumber: string,
-        hobbies: Array<string>,
-        currentAddress: string,
-        state: string,
-        city: string
-    }) {
-        this.insertIntoInput("firstName", information.name)
-        this.insertIntoInput("lastName", information.lastName)
-        this.insertIntoInput("userEmail", information.email)
+    public fillForm(information: Information) {
+        this.insertIntoInput(this.selectorFirstNameInput, information.name)
+        this.insertIntoInput(this.selectorLastNameInput, information.lastName)
+        this.insertIntoInput(this.selectorUserEmailInput, information.email)
         this.selectGender(information.gender)
-        this.insertIntoInput("userNumber", information.mobileNumber)
-        this.insertIntoInput("dateOfBirthInput", information.dateOfBirth)
+        this.insertIntoInput(this.selectorUserNumberInput, information.mobileNumber)
+        this.insertIntoInput(this.selectorUserDateOfBirthInput, information.dateOfBirth)
         information.hobbies.forEach((hobbie) => {
             this.selectHobby(this.transformHobby[`${hobbie}`])
         })
-        this.insertIntoInput("currentAddress", information.currentAddress)
+        this.insertIntoInput(this.selectorAddressInput, information.currentAddress)
         this.selectState(information.state)
         this.selectCity(information.city)
-        this.click(this.getSelectorSubmitButton)
+        cy.get(this.selectorForm).submit()
     }
 
     public verifyModalHeaderText(expectedText: string) {
-        cy.get(this.getSelectorInputById("example-modal-sizes-title-lg")).should("have.text", expectedText)
+        cy.get(this.selectorPopUpTitle).should("have.text", expectedText)
     }
 }
+
+interface Information {
+    name: string,
+    lastName: string,
+    email: string,
+    gender: string,
+    dateOfBirth: string,
+    mobileNumber: string,
+    hobbies: Array<string>,
+    currentAddress: string,
+    state: string,
+    city: string
+}
+
 export { PracticeFormPage }
