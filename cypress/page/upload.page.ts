@@ -7,9 +7,9 @@ class UploadPage {
 
     constructor() {
         this.baseUrl = "https://the-internet.herokuapp.com/upload"
-        this.selectorFileUploadButton = "#file-upload-button"
+        this.selectorFileUploadButton = "#file-upload"
         this.selectorForm = "form"
-        this.selectorUploadedFilesText = "#upload-files"
+        this.selectorUploadedFilesText = "#uploaded-files:contains('example.json')"
     }
 
     visitPage() {
@@ -22,6 +22,7 @@ class UploadPage {
     }
 
     checkUploadedFileName(expectedResult: string) {
-        cy.get(this.selectorUploadedFilesText).should('have.text', expectedResult)
+        cy.get(this.selectorUploadedFilesText).should('be.visible')
     }
 }
+export { UploadPage }
