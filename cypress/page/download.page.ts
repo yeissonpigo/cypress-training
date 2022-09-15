@@ -1,4 +1,4 @@
-class UploadPage {
+class DownloadPage {
 
     private baseUrl: string
     private selectorDownloadButton: string
@@ -12,8 +12,12 @@ class UploadPage {
         cy.visit(this.baseUrl)
     }
 
-    checkUploadedFileName(expectedResult: string) {
-        cy.get(this.selectorUploadedFilesText).should('be.visible')
+    downloadFile() {
+        cy.get(this.selectorDownloadButton).click()
+    }
+
+    checkFileExists() {
+        cy.readFile("cypress/downloads/sampleFile.jpeg").should('exist')
     }
 }
-export { UploadPage }
+export { DownloadPage }
