@@ -1,4 +1,4 @@
-import {PracticeFormPage} from "../page/index";
+import { PracticeFormPage } from "../page/index";
 
 describe("User goes to website, fills the form and submits it", () => {
   let practiceFormPage: PracticeFormPage;
