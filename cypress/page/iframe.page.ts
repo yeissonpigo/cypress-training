@@ -9,7 +9,7 @@ class IFramePage {
     constructor() {
         this.baseUrl = "https://www.w3schools.com/html/html_iframe.asp"
         this.cssUrl = "https://www.w3schools.com/css/default.asp"
-        this.selectorIFrame = "#main > div > iframe[title='W3Schools HTML Tutorial']"
+        this.selectorIFrame = "iframe[title='W3Schools HTML Tutorial']"
         this.selectorIFrameTitle = "#main h1"
         this.selectorIFrameCssButton = "[title='CSS Tutorial']"
     }
@@ -18,16 +18,19 @@ class IFramePage {
         cy.visit(this.baseUrl)
     }
 
-    getFrameTitle(titleExpected: string) {
-        cy.iframe(this.selectorIFrame).find(this.selectorIFrameTitle).should('have.text', titleExpected)
+    private getFrameTitle() {
+        return cy.iframe(this.selectorIFrame).find(this.selectorIFrameTitle)
     }
 
-    goToCssPageInFrame(titleExpected: string) {
+    checkTitleInIFrame(expectedTitle: string) {
+        this.getFrameTitle().should('have.text', expectedTitle)
+    }
+
+    goToCssPageInFrame() {
         cy.iframe(this.selectorIFrame).find(this.selectorIFrameCssButton).click()
         cy.frameLoaded(this.selectorIFrame, {
             url: this.cssUrl,
         });
-        cy.iframe(this.selectorIFrame).find(this.selectorIFrameTitle).should('have.text', titleExpected)
     }
 
 }
