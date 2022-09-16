@@ -9,6 +9,7 @@ export default defineConfig({
     setupNodeEvents(on, config) {
       // modify config values examples
       // config.defaultCommandTimeout = 10000
+      config.chromeWebSecurity = false;
       config.defaultCommandTimeout = 20000
       config.responseTimeout = 20000
 
