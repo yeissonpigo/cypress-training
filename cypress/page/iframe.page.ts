@@ -14,19 +14,15 @@ class IFramePage {
         this.selectorIFrameCssButton = "[title='CSS Tutorial']"
     }
 
-    visit() {
+    public visit() {
         cy.visit(this.baseUrl)
     }
 
-    private getFrameTitle() {
+    public getFrameTitle() {
         return cy.iframe(this.selectorIFrame).find(this.selectorIFrameTitle)
     }
 
-    checkTitleInIFrame(expectedTitle: string) {
-        this.getFrameTitle().should('have.text', expectedTitle)
-    }
-
-    goToCssPageInFrame() {
+    public goToCssPageInFrame() {
         cy.iframe(this.selectorIFrame).find(this.selectorIFrameCssButton).click()
         cy.frameLoaded(this.selectorIFrame, {
             url: this.cssUrl,

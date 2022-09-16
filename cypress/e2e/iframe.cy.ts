@@ -9,12 +9,12 @@ describe("Check the iframe", () => {
   });
 
   it("Goes to page and checks iFrame exists", () => {
-    iFramePage.checkTitleInIFrame("HTML Tutorial");
+    iFramePage.getFrameTitle().should("have.text", "HTML Tutorial");
   });
 
   it("Goes to page, using iframe goes to css page, and checks it is updated", () => {
     iFramePage.goToCssPageInFrame();
 
-    iFramePage.checkTitleInIFrame("CSS Tutorial");
+    iFramePage.getFrameTitle().should("have.text", "CSS Tutorial");
   });
 });
