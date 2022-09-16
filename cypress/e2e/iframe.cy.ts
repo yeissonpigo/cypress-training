@@ -1,17 +1,17 @@
-import { IFramePage } from "../page";
+import {IFramePage} from "../page";
 
 describe("Check the iframe", () => {
-    let iFramePage: IFramePage;
+  let iFramePage: IFramePage;
 
-    before(() => {
-        iFramePage = new IFramePage;
-    });
+  before(() => {
+    iFramePage = new IFramePage;
+  });
 
-    it("Goes to page and checks iFrame exists", () => {
-        iFramePage.visit();
+  it("Goes to page and checks iFrame exists", () => {
+    iFramePage.visit();
 
-        iFramePage.getFrameTitle("HTML Tutorial");
+    iFramePage.getFrameTitle("HTML Tutorial");
 
-        iFramePage.goToCssPageInFrame("CSS Tutorial");
-    });
+    iFramePage.goToCssPageInFrame("CSS Tutorial");
+  });
 });
